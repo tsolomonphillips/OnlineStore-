@@ -17,8 +17,7 @@ public class Account
     private String lastName;
     private String emailAddress;
 
-    @OneToMany(mappedBy = "accountId")
-    //@Column(name = "address_id")
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addressList = new ArrayList<>();
 
     public Account()
@@ -71,13 +70,13 @@ public class Account
         this.emailAddress = emailAddress;
     }
 
-    public List<Address> getAddressIdList()
+    public List<Address> getAddressList()
     {
         return addressList;
     }
 
-    public void setAddressIdList(List<Address> addressIdList)
+    public void setAddressList(List<Address> addressList)
     {
-        this.addressList = addressIdList;
+        this.addressList = addressList;
     }
 }

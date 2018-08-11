@@ -18,9 +18,9 @@ public class Address
     private String zipCode;
     private String country;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
-    private Account accountId;
+    private Account account;
 
     public Address()
     {
@@ -28,7 +28,7 @@ public class Address
     }
 
     public Address(Long addressId, String street, String aptBuilding, String city,
-                   String state, String zipCode, String country, Account accountId)
+                   String state, String zipCode, String country, Account account)
     {
         this.addressId = addressId;
         this.street = street;
@@ -37,7 +37,7 @@ public class Address
         this.state = state;
         this.zipCode = zipCode;
         this.country = country;
-        this.accountId = accountId;
+        this.account = account;
     }
 
     public Long getAddressId()
@@ -110,13 +110,13 @@ public class Address
         this.addressId = addressId;
     }
 
-    public Account getAccountId()
+    public Account getAccount()
     {
-        return accountId;
+        return account;
     }
 
-    public void setAccountId(Account accountId)
+    public void setAccount(Account account)
     {
-        this.accountId = accountId;
+        this.account = account;
     }
 }
